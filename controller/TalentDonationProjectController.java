@@ -13,6 +13,7 @@ public class TalentDonationProjectController {
 	
 	
 	/* instance 생성 및 service 불러오기 */
+
 	private static TalentDonationProjectController instance = new TalentDonationProjectController(); 
 	private TalentDonationProjectService service = TalentDonationProjectService.getInstance();
 	private TalentDonationProjectController() {}
@@ -47,10 +48,10 @@ public class TalentDonationProjectController {
 	
 	public void donationProjectInsert(TalentDonationProject project) {
 		
-		if(project != null) {
+		if (opt.isPresent()) {
 			try {
-				service.donationProjectInsert(project);
-			} catch (ProjectNameDuplicationException e) {
+				service.donationProjectInsert(opt.get());
+			} catch(ProjectNameDuplicatedException e) {
 				e.printStackTrace();
 				EndFailView.failView(e.getMessage());
 			}
@@ -65,38 +66,41 @@ public class TalentDonationProjectController {
 	/* 수정 메소드 */
 	
 	public void donationProjectUpdate(String projectName, Donator people) {
+		boolean result = service.donationProjectUpdate(projectName, people);
+		Optional<String> optName = Optional.ofNullable(projectName);
+		Optional<Object> optPeople = Optional.ofNullable(people);
 		
-		if(projectName != null && people != null) {
-			boolean result = service.donationProjectUpdate(projectName, people);
-			if(result) { 
+		if (optName.isPresent() && optPeople.isPresent()) {
+			if (result) {
 				try {
 					EndView.projectView(service.getDonationProject(projectName));
-				} catch (ProjectNotFoundException e) {
+				} catch(ProjectNotFoundException e) {
 					e.printStackTrace();
-					EndFailView.failView("기부자 갱신 후 검색 실패 " );
+					EndFailView.failView("갱신 후 검색 실패"); //갱신했는데 db 접속문제 등으로 검색 실패한 경우
 				}
 			}else {
-				EndFailView.failView("미 존재하는 프로젝트 수정 시도");
+				EndFailView.failView("이 존재하는 프로젝트 수정 시도");	
 			}
-			
 		}else {
-			EndFailView.failView("기부자 갱신 정보 제대로 입력하세요!!!");
+			EndFailView.failView("갱신 정보를 제대로 입력하세요!");
 		}
 	}
 	
 	
 	public void beneficiaryProjectUpdate(String projectName, Beneficiary people) {
+		Optional<String> optName = Optional.ofNullable(projectName);
+		Optional<Object> optPeople = Optional.ofNullable(people);
 		
-		if(projectName != null && people != null) {
+		if (optName.isPresent() && optPeople.isPresent()) {
 			try {
 				service.beneficiaryProjectUpdate(projectName, people);
 				EndView.successView("수혜자 정보 갱신 성공");
-			} catch (ProjectNotFoundException e) {
+			} catch(ProjectNotFoundException e) { //수정하려는 프로젝트 미존재시
 				e.printStackTrace();
-				EndFailView.failView(e.getMessage()); //"수혜자 정보를 수정하고자 하는 프로젝트가 미 존재합니다." 정보 의미
+				EndFailView.failView(e.getMessage());
 			}
 		}else {
-			EndFailView.failView("수혜자 갱신 정보 제대로 입력하세요!!!");
+			EndFailView.failView("기부자 수정 정보를 제대로 입력하세요!");
 		}
 	}
 	
@@ -106,16 +110,17 @@ public class TalentDonationProjectController {
 	/* 삭제 메소드 */
 	
 	public void donationProjectDelete(String projectName) {
+		Optional<String> optName = Optional.ofNullable(projectName);
 		
-		if(projectName != null) {
+		if (optName.isPresent()) {
 			boolean result = service.donationProjectDelete(projectName);
-			if(result) {
+			if (result) {
 				EndView.successView(projectName + " 프로젝트 삭제 성공");
 			}else {
-				EndFailView.failView("삭제하려는 프로젝트가 미 존재합니다.");
+				EndFailView.failView("삭제하려는 프로젝트가 미존재합니다.");
 			}
 		}else {
-			EndFailView.failView("삭제하려는 프로젝트명 입력하세요");
+			EndFailView.failView("삭제하려는 프로젝트를 입력하세요.");
 		}
 	}
 	

@@ -102,16 +102,12 @@ public class TalentDonationProjectService {
 
 	public boolean donationProjectDelete(String projectName) {
 		
-		TalentDonationProject project = null;
-		int count = donationProjectList.size();
-		for(int i=0; i<count; i++) {
-			project = donationProjectList.get(i);
-			if(project.getTalentDonationProjectName().equals(projectName)) {
-				donationProjectList.remove(i);
-				return true;
+		for (TalentDonationProject t : donationProjectList) {
+			if (projectName.equals(t.getTalentDonationProjectName())) {
+				donationProjectList.remove(t);
+				break;
 			}
-		}		
-		return false;
+		}
 	}
 
 }

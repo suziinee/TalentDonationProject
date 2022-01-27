@@ -57,13 +57,12 @@ public class TalentDonationProjectService {
 
 	public void donationProjectInsert(TalentDonationProject project) 
 			throws ProjectNameDuplicationException {
+		boolean anyMatch = donationProjectList.stream().anyMatch(p -> 
+		p.getTalentDonationProjectName().equals(project.getTalentDonationProjectName()));
 		
-		int count = 0;
-		count += donationProjectList.stream().filter(data -> data.getTalentDonationProjectName().equals(project.getTalentDonationProjectName()))
-		.count();
-		if(count == 1) {
+		if (anyMatch) {
 			throw new ProjectNameDuplicatedException();
-		} else {
+		}else {
 			donationProjectList.add(project);
 		}
 	}

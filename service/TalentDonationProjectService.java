@@ -41,13 +41,13 @@ public class TalentDonationProjectService {
 
 	public TalentDonationProject getDonationProject(String projectName) 
 			throws ProjectNotFoundException {
-		
-		for(TalentDonationProject e : donationProjectList) {
-			if(e.getTalentDonationProjectName().equals(projectName)) {
-				return e;
-			}
+		Optional<TalentDonationProject> opt = donationProjectList.stream().filter(p 
+				-> p.getTalentDonationProjectName().equals(projectName)).findAny();
+	
+		if (opt.isPresent()) {
+			return opt.get();
 		}
-		throw new ProjectNotFoundException("요청하신 project는 존재하지 않습니다");
+		throw new ProjectNotFoundException();
 	}
 	
 
@@ -58,12 +58,14 @@ public class TalentDonationProjectService {
 	public void donationProjectInsert(TalentDonationProject project) 
 			throws ProjectNameDuplicationException {
 		
-		for(TalentDonationProject e : donationProjectList) {
-			if(e.getTalentDonationProjectName().equals( project.getTalentDonationProjectName() )) {
-				throw new ProjectNameDuplicationException("이미 존재하는 Project입니다");
-			}
+		int count = 0;
+		count += donationProjectList.stream().filter(data -> data.getTalentDonationProjectName().equals(project.getTalentDonationProjectName()))
+		.count();
+		if(count == 1) {
+			throw new ProjectNameDuplicatedException();
+		} else {
+			donationProjectList.add(project);
 		}
-		donationProjectList.add(project);
 	}
 
 	
@@ -72,12 +74,12 @@ public class TalentDonationProjectService {
 	/* 수정 메소드 */
 
 	public boolean donationProjectUpdate(String projectName, Donator people) {
+		Optional<TalentDonationProject> opt = donationProjectList.stream().filter(p -> 
+				p.getTalentDonationProjectName().equals(projectName)).findAny();
 		
-		for(TalentDonationProject project : donationProjectList) {
-			if(project.getTalentDonationProjectName().equals(projectName)) {
-				project.setProjectDonator(people);
-				return true;   //메소드 자체가 종료
-			}
+		if (opt.isPresent()) {
+			opt.get().setProjectDonator(people);
+			return true;
 		}
 		return false;
 	}
@@ -85,14 +87,14 @@ public class TalentDonationProjectService {
 	
 	public void beneficiaryProjectUpdate(String projectName, Beneficiary people) 
 			throws ProjectNotFoundException{
+		Optional<TalentDonationProject> opt = donationProjectList.stream().filter(p -> 
+			p.getTalentDonationProjectName().equals(projectName)).findAny();
 		
-		for(TalentDonationProject e : donationProjectList) {
-			if(e != null && e.getTalentDonationProjectName().equals(projectName)) {
-				e.setProjectBeneficiary(people);
-				return; 
-			}
-		}		
-		throw new ProjectNotFoundException("수혜자 정보를 수정하고자 하는 프로젝트가 미 존재합니다.");
+		if (opt.isPresent()) {
+			opt.get().setProjectBeneficiary(people);
+			return;
+		}
+		throw new ProjectNotFoundException("수혜자 정보를 수정하고자 하는 프로젝트가 미존재합니다.");
 	}
 	
 	
@@ -101,13 +103,14 @@ public class TalentDonationProjectService {
 	/* 삭제 메소드 */
 
 	public boolean donationProjectDelete(String projectName) {
+		Optional<TalentDonationProject> opt = donationProjectList.stream().filter(p -> 
+				p.getTalentDonationProjectName().equals(projectName)).findAny();
 		
-		for (TalentDonationProject t : donationProjectList) {
-			if (projectName.equals(t.getTalentDonationProjectName())) {
-				donationProjectList.remove(t);
-				break;
-			}
+		if (opt.isPresent()) {
+			donationProjectList.remove(opt.get());
+			return true;
 		}
+		return false;
 	}
 
 }

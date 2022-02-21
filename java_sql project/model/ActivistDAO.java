@@ -29,7 +29,7 @@ public class ActivistDAO {
 		
 		try{
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("insert into activist values(?, ?, ?, ?)");
+			pstmt = con.prepareStatement(DBUtil.getActivistDAOsql("insert"));
 			pstmt.setString(1, activist.getId());
 			pstmt.setString(2, activist.getName());
 			pstmt.setString(3, activist.getPassword());
@@ -55,7 +55,7 @@ public class ActivistDAO {
 		PreparedStatement pstmt = null;
 		try{
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("update activist set major=? where activist_id=?");
+			pstmt = con.prepareStatement(DBUtil.getActivistDAOsql("update"));
 			pstmt.setString(1, major);
 			pstmt.setString(2, activistId);
 			int result = pstmt.executeUpdate();
@@ -79,7 +79,7 @@ public class ActivistDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("delete from activist where activist_id = ?");
+			pstmt = con.prepareStatement(DBUtil.getActivistDAOsql("delete"));
 			pstmt.setString(1, activistId);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
@@ -104,7 +104,7 @@ public class ActivistDAO {
 		ActivistDTO activist = null;
 		try{
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from activist where activist_id=?");
+			pstmt = con.prepareStatement(DBUtil.getActivistDAOsql("getActivist"));
 			pstmt.setString(1, activistId);
 			rset = pstmt.executeQuery();
 			if(rset.next()){
@@ -129,7 +129,7 @@ public class ActivistDAO {
 		ArrayList<ActivistDTO> all = new ArrayList<ActivistDTO>();
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from activist");
+			pstmt = con.prepareStatement(DBUtil.getActivistDAOsql("getAllActivists"));
 			rset = pstmt.executeQuery();
 			while (rset.next()) {
 				all.add( new ActivistDTO(rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4)) );

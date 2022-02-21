@@ -15,6 +15,7 @@ public class DBUtil {
 	/* Properties 객체들 */
 	
 	static Properties dbInfo = new Properties();
+	static Properties ActivistDAOsql = new Properties();
 	
 	
 	/* 최초 실행 static */
@@ -23,14 +24,21 @@ public class DBUtil {
 		
 		try {
 			dbInfo.load(new FileReader("sql/db.properties"));
-			probonosql.load(new FileReader("sql/probonosql.properties"));
+			ActivistDAOsql.load(new FileReader("sql/ActivistDAO.properties"));
 			Class.forName(dbInfo.getProperty("jdbc.driver"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+
+	/* ActivistDAOsql 문장 반환 */
+
+	public static String getActivistDAOsql(String property) {
+		return ActivistDAOsql.getProperty(property);
+	}
 	
+
 	/* Connection 객체 반환*/
 
 	public static Connection getConnection() throws SQLException {

@@ -1,0 +1,276 @@
+h3 {
+  text-align: center;
+  background-color: #9ABF4B;
+  border: 3px solid #5d7d1a;
+  color:white;
+  border-radius: 5px;
+  width:20%;
+  height:30px;
+  font-size: 15pt; 
+  margin: 30px;
+}
+
+table.tableTalent td:hover{
+    background: #E7F2BD;
+    border-radius: 2em;
+  }
+
+table.tableTalent {
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border: 3px solid #5d7d1a;
+    margin: 20px 10px;
+    border-radius: 2em;
+  }
+  table.tableTalent thead th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: #9ABF4B;
+    border: 2px solid #5d7d1a;
+    margin: 20px 10px;
+    border-radius: 2em;
+  }
+  table.tableTalent tbody th {
+    width: 150px;
+    padding: 10px;
+  }
+  table.tableTalent td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+  }
+
+
+  
+
+/* reset.css */
+textarea::-webkit-placeholder {
+    font-size: 70%;
+  }
+  textarea::-moz-placeholder {
+    font-size: 70%;
+  }
+  textarea::-ms-placeholder {
+    font-size: 70%;
+  }
+  textarea::placeholder {
+    font-size: 70%;
+  }
+  
+  
+  html, body {
+      box-sizing: border-box;
+      font-family: 'Nanum Gothic', 'sans-serif';
+      font-weight: 700;
+  }
+  
+  ul {
+      list-style: none;
+      margin: 0;
+  }
+  
+  a,
+  a:link,
+  a:visited,
+  a:active,
+  a:hover {
+      text-decoration: none;
+      color: #212529;
+  }
+  
+  textarea {
+    border: none;
+    resize: none;
+  }
+  
+  hr {
+    margin-top: 0;
+  }
+  
+  /* General */
+  
+  i {
+      color: #6c757d;
+  }
+  
+  body {
+      height: 100vh;
+      /* position: relative; */
+  }
+  
+  article {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-height: 100%;
+  }
+  
+  header {
+      height: 20vh;
+  }
+  
+  section {
+    flex-grow: 1;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  /* Header */
+.Header {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  margin: 0 50px;
+ 
+}
+.Header__main {
+  display: flex;
+  align-items: center;
+}
+.Header__main__menu {
+  display: flex;
+  width:700px;
+  height:50px;
+  color:black;
+  line-height: 50px;
+  margin:0 auto;
+  text-align: center;
+}
+.Header__main__menu li {
+  font-size: 20px;
+  width:200px;
+  padding-bottom: 0px;
+}
+.Header__main__menu li ul {
+  display: none;
+  position: absolute ;
+  text-align: center;
+  padding-left: 0;
+}
+.Header__main__menu li a:hover, .BookMark li a:hover, .MyMatch li a:hover{
+color: #9ABF4B;
+}
+.Header__main__menu li:hover ul {
+  display: block;
+}
+.Header__main__menu ul li:hover {
+  color: #9ABF4B;
+  transition: ease 1s;
+}
+.Header__main__logo img {
+display: flex;
+width: 20rem;
+}
+
+.SiteMap li {
+  font-size: 20px;
+  line-height: 50px;
+  list-style: none;
+  text-align: center;
+  width:200px;
+  }
+.Language li {
+  font-size: 20px;
+  line-height: 50px;
+  list-style: none;
+  text-align: center;
+  width:200px;
+  }
+.BookMark {
+    margin-top: 40px;
+  }
+.BookMark ul {
+    margin-bottom: 40px;
+    padding-left: 0px;
+  }
+  
+.BookMark li {
+    font-size: small;
+    padding : 0px;
+    padding-bottom: 15px;
+    list-style: none;
+    text-align: center;
+    width:120px;
+    font-weight: 700;
+  }
+.MyMatch {
+    margin-top: 40px;
+  }
+.MyMatch ul {
+    margin-bottom: 40px;
+    padding-right: 20px;
+  }
+.MyMatch li {
+    font-size: small;
+    padding-bottom: 15px;
+    list-style: none;
+    text-align: center;
+    width:120px;
+    margin-right: 10px;
+    font-weight: 700;
+  }
+
+.QR img {
+  padding-left: 10px;
+  max-width: 50%;
+}
+
+
+  
+  
+  /* Footer */
+.Footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.Footer__corp {
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.Footer__sns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 20px;
+  padding: 10px;
+}
+
+.Footer__sns li {
+  margin: 0 10px;
+  padding: 10px;
+}
+
+.Footer__menu {
+  display: flex;
+}
+
+.Footer__menu li {
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.Footer__partner1 {
+  justify-content: flex-end;
+}
+.Footer__partner2 {
+  margin: 0 100px 0 0;
+}
+
+.Footer__partner1 img{
+  width: 200px;
+}
+
+.Footer__partner2 img{
+  margin-bottom: 10px;
+  max-width: 80%;
+}

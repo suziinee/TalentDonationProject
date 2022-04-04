@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probono Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" href="becomeMember.css">
+</head>
+<body>
+    <article>
+        <header>
+            <div class="Header">
+                <div class="Header__main">
+                    <h1 class="Header__main__logo">
+                        <a href="../main/Loginbefore.html">
+                            <img src="../main/img/probono logo.jpg" alt="probono logo">
+                        </a>
+                    </h1>
+                    <ul class="Header__main__menu">
+                        <li><a href="#">안내</a>
+                            <ul>
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">About us</a>
+                            <ul>
+                                <li><a href="../Profile/Profile.html">임직원 소개</a></li>
+                                <li><a href="#">연혁</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">기부</a>
+                            <ul>
+                                <li><a href="../ViewList/donation.html">기부자 목록 보기</a></li>
+                                <li><a href="../ViewList/benefit.html">수혜자 목록 보기</a></li>
+                                <li><a href="../ViewList/allPersons.html">모두 보기</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="SiteMap">
+                        <li><a href="#">사이트 맵</a>
+                    </div>
+                    <div class="Language">
+                        <li><a href="#">Language</a>
+                    </div>
+                    <div class="Login">
+                        <form action="../Loginafter/Loginafter.html">
+                            <input id="username" type="text" name="personId" placeholder="아이디">
+                            <label for="username">아이디</label>
+                            <input type="submit" value="로그인" id="inputSubmit">
+                        </form>
+                        <form action="../Member/becomeMember.html">
+                            <input type="submit" value="회원가입">
+                        </form>
+
+                        <script>
+                            // const inputSubmit = document.getElementById("inputSubmit");
+                            // var id;
+                            // function printName() {
+                            //     id = document.getElementById("username").value;
+                            //     console.log(id);
+                            //     async function request() {
+                            //     const response = await fetch(`http://localhost:8090/api/v1/persons/id?personId=${id}`,
+                            //     {
+                            //         method: 'GET',
+                            //     });
+                            //     const data = await response.json();
+                            //     console.log(data);
+                            //     } 
+                            //     request();
+                            // }
+                            // inputSubmit.addEventListener('click', printName)
+                        </script>
+
+                    </div>
+                    <div class="QR">
+                        <img src="https://us.123rf.com/450wm/rastudio/rastudio1604/rastudio160407828/55170717-%EC%9B%B9-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EB%B0%8F-infographics%EC%97%90-%EB%8C%80%ED%95%9C-%EB%AA%A8%EC%84%9C%EB%A6%AC%EC%99%80-%EB%AA%A8%EC%84%9C%EB%A6%AC%EA%B0%80-%EB%BE%B0%EC%A1%B1%ED%95%9C-qr-%EC%BD%94%EB%93%9C-%EB%91%90%EA%BA%BC%EC%9A%B4-%EC%84%A0-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B2%A1%ED%84%B0-%EA%B2%A9%EB%A6%AC-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9E%85%EB%8B%88%EB%8B%A4-.jpg?ver=6" alt="QR img">
+                    </div>
+                </div> 
+            </div>
+            <hr>
+        </header>
+        <section>
+            <h3>회원가입</h3>
+            <form id="formElem">
+                <div class="becomeMember">
+                    <input id="username" type="text" name="username" placeholder="이름"> 
+                    <label for="username">이름</label>
+                </div>
+                <div class="becomeMember">    
+                    <input id="useremail" type="text" name="useremail" placeholder="이메일"> 
+                    <label for="username">이메일</label>
+                </div>
+                <div class="BenefitList">
+                    <select name="benefit" class="benefitSelect">
+                        <option value="none">수혜 타입 선택</option>
+                        <option value="1" label="국어"></option>
+                        <option value="2" label="수학"></option>
+                        <option value="3" label="영어"></option>
+                        <option value="4" label="피아노"></option>
+                        <option value="5" label="노래"></option>
+                        <option value="6" label="마술"></option>
+                        <option value="7" label="보건 및 의료"></option>
+                        <option value="8" label="무료법률상담"></option>
+                        <option value="9" label="청소년 상담"></option>
+                        <option value="10" label="JAVA 코딩 교육"></option>
+                    </select>
+                </div>
+                <div class="DonateList">
+                    <select name="donate" class="donateSelect">
+                        <option value="none">기부 타입 선택</option>
+                        <option value="1" label="국어"></option>
+                        <option value="2" label="수학"></option>
+                        <option value="3" label="영어"></option>
+                        <option value="4" label="피아노"></option>
+                        <option value="5" label="노래"></option>
+                        <option value="6" label="마술"></option>
+                        <option value="7" label="보건 및 의료"></option>
+                        <option value="8" label="무료법률상담"></option>
+                        <option value="9" label="청소년 상담"></option>
+                        <option value="10" label="JAVA 코딩 교육"></option>
+                    </select>
+                </div>
+                <input id="success" type="submit" value="확인" onclick="document.location.href='successMember.html'">
+            </form>
+
+            <script>
+                const btn = document.getElementById("success");
+                const benefitList = document.querySelector(".benefitSelect");
+                const donateList = document.querySelector(".donateSelect");
+                var benefitChoice;
+                var donateChoice;
+                function change() {
+                    const choice1 = benefitList.options[benefitList.selectedIndex].value;
+                    const choice2 = donateList.options[donateList.selectedIndex].value;
+                    if (choice1 == "none") {
+                        benefitChoice = null;
+                    } else {
+                        benefitChoice = choice1;
+                    }
+                    console.log(benefitChoice);
+
+                    if (choice2 == "none") {
+                        donateChoice = null;
+                    } else {
+                        donateChoice = choice2;
+                    }
+                    console.log(donateChoice);
+                }
+                
+                btn.addEventListener('click', change);
+
+                formElem.onsubmit = async (e) => {
+                    e.preventDefault();
+                    const form = document.querySelector("#formElem");
+                    
+                    if (benefitChoice == null && donateChoice == null) {
+                        data = {
+                        name : form.querySelector('input[name="username"]').value,
+                        email : form.querySelector('input[name="useremail"]').value,
+                        benefit : null,
+                        donation : null
+                        }
+                    } else if (benefitChoice != null && donateChoice == null) {
+                        data = {
+                        name : form.querySelector('input[name="username"]').value,
+                        email : form.querySelector('input[name="useremail"]').value,
+                        benefit : benefitChoice,
+                        donation : null
+                        }
+                    } else if (benefitChoice == null && donateChoice != null) {
+                        data = {
+                        name : form.querySelector('input[name="username"]').value,
+                        email : form.querySelector('input[name="useremail"]').value,
+                        benefit : null,
+                        donation : donateChoice
+                        }
+                    } else {
+                        data = {
+                        name : form.querySelector('input[name="username"]').value,
+                        email : form.querySelector('input[name="useremail"]').value,
+                        benefit : benefitChoice,
+                        donation : donateChoice
+                        }
+                    }
+                    
+                    let response = await fetch('http://localhost:8090/api/v1/persons', {
+                            method: 'POST', 
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(data),
+                    })
+                };
+            </script>
+        </section>
+        <footer>
+            <hr>
+            <div class="Footer">
+                <p class="Footer__corp">&copy; 2022 Company, Inc</p>
+                <ul class="Footer__sns">
+                    <li>
+                        <a href="https://www.facebook.com/">
+                        <i class="fab fa-facebook fa-lg"></i>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </li>
+                    <ul class="Footer__menu">
+                        <li><a href="#">기부자그룹</a></li>
+                        <li><a href="#">기부자신청</a></li>
+                        <li><a href="#">오시는길</a></li>
+                    </ul>
+                </ul>
+                <div class="Footer__partner1">
+                    <a href="https://www.nanumkorea.go.kr/main.do">
+                        <img src="https://chest.or.kr/common/img/common/1365_logo.png" alt="1365 img">
+                    </a>
+                </div>
+                <div class="Footer__partner2">
+                    <a href="http://www.w4c.go.kr/main/mainPage.do">
+                        <img src="https://chest.or.kr/common/img/common/footer_partner_logo.png" alt="보건복지부 img">
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </article>
+</body>
+</html>
